@@ -21,13 +21,38 @@ int basic_calc() //Basit Hesap Makinesi fonksiyonu
 	
 	double sayi1,sayi2,sonuc;
 	int tam_sayi_sonuc;
+	int okuma_sonucu_double;
 	
-	printf("--------------------------------\n");
-	printf("Lütfen 1. sayýyý giriniz: ");
-	scanf("%lf",&sayi1);
-	printf("--------------------------------\n");
-	printf("Lütfen 2. sayýyý giriniz: ");
-	scanf("%lf",&sayi2);
+	printf("--------------------------------");
+	do
+	{
+		printf("\nLütfen 1. sayýyý giriniz: ");
+		okuma_sonucu_double = scanf("%lf",&sayi1);
+		
+		if (okuma_sonucu_double!=1)
+		{
+			printf("--------------------------------\n");
+			printf("\x1b[1;31mHATA: \x1b[0mLütfen sayýsal bir deðer giriniz.");
+			printf("\n--------------------------------");
+			while (getchar() != '\n');
+		}
+	}while (okuma_sonucu_double != 1);
+	
+	printf("--------------------------------");
+	do
+	{
+		
+		printf("\nLütfen 2. sayýyý giriniz: ");
+		okuma_sonucu_double = scanf("%lf",&sayi2);
+		
+		if(okuma_sonucu_double!=1)
+		{
+			printf("--------------------------------\n");
+			printf("\x1b[1;31mHATA: \x1b[0mLütfen sayýsal bir deðer giriniz.");
+			printf("\n--------------------------------");
+			while (getchar() != '\n');
+		}
+	}while(okuma_sonucu_double!=1);
 	
 	
 	
@@ -62,7 +87,6 @@ int factorial_calc() //Faktöriyel Hesaplama Makinesi fonksiyonu
 	int sayi;
 	unsigned long long int faktoriyel_sonucu=1;
 	const int MAX_FAKTORIYEL_SINIRI = 20;
-	setlocale(LC_ALL,"Turkish");
 	
 	printf("Lütfen Faktöriyel Hesabý Ýçin 0-20 Arasýnda Bir Tam Sayý Giriniz (Ondalýk Sayýnýn Tam Kýsmý Kullanýlacaktýr): ");
 	scanf("%d",&sayi);
@@ -126,22 +150,22 @@ int squaring_calc() //Kare Alma fonksiyonu
 	return 0;
 }
 
-int menu()
+int menu() //Menü fonksiyonu
 {
 	//Tanýmlamalarýmýz
 	const int animasyon_suresi = 500;
 	const int menu_sayisi = 3;
 	int menu_secim;
 	int i = 1; 
-	int okuma_sonucu;
+	int okuma_sonucu_menu;
 	
 	do 
 	{
 		printf("--------------------------------\n");
 		printf("Menü Giriþi: ");
-		okuma_sonucu = scanf("%d",&menu_secim);
+		okuma_sonucu_menu = scanf("%d",&menu_secim);
 		
-		if (okuma_sonucu !=1)
+		if (okuma_sonucu_menu !=1)
 		{
 			printf("--------------------------------\n");
 			printf("\r\x1b[1;31mHATA:\x1b[0m Lütfen sayýsal bir deðer girin!\n");
@@ -193,7 +217,7 @@ int menu()
 
 }
 
-int main() 
+int main() //Ana fonksiyon
 {
 	setlocale(LC_ALL,"Turkish"); //Türkçe için yerelleþtirme
 	setlocale(LC_NUMERIC, "C");  //Hesaplamalarda ',' '.' çakýþmasý istemiyoruz
