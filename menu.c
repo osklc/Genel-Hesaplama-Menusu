@@ -3,7 +3,10 @@
 #include <locale.h>
 #include <windows.h>
 
-void basic_calc() //Basit Hesap Makinesi fonksiyonu
+//Problemler: 1. menüye string girince program sapýtýyor.
+//2. basit hesap makinesi inputta hem str hem c hem int için sapýtýyor
+
+int basic_calc() //Basit Hesap Makinesi fonksiyonu
 {
 	char islem;
 	printf("Lütfen Ýþlem Giriniz(+,-,*,/): ");
@@ -13,6 +16,7 @@ void basic_calc() //Basit Hesap Makinesi fonksiyonu
 	{
 		printf("--------------------------------\n");
 		printf("Hatalý Ýþlem Giriþi!");
+		return 1;
 	}
 	
 	double sayi1,sayi2,sonuc;
@@ -35,11 +39,11 @@ void basic_calc() //Basit Hesap Makinesi fonksiyonu
 			
 			if (sonuc!=tam_sayi_sonuc) 
 			{
-				printf("Sonuç: %.2f",sonuc);
+				printf("Toplama Sonucu: %.2f",sonuc);
 			}
 			else
 			{
-				printf("Sonuç: %d",tam_sayi_sonuc);
+				printf("Toplama Sonucu: %d",tam_sayi_sonuc);
 			}
 			break;
 			
@@ -51,11 +55,11 @@ void basic_calc() //Basit Hesap Makinesi fonksiyonu
 			
 			if (sonuc!=tam_sayi_sonuc) 
 			{
-				printf("Sonuç: %.2f",sonuc);
+				printf("Çýkartma Sonucu: %.2f",sonuc);
 			}
 			else
 			{
-				printf("Sonuç: %d",tam_sayi_sonuc);
+				printf("Çýkartma Sonucu: %d",tam_sayi_sonuc);
 			}
 			break;
 		case '*':
@@ -66,11 +70,11 @@ void basic_calc() //Basit Hesap Makinesi fonksiyonu
 			
 			if (sonuc!=tam_sayi_sonuc) 
 			{
-				printf("Sonuç: %.2f",sonuc);
+				printf("Çarpma Sonucu: %.2f",sonuc);
 			}
 			else
 			{
-				printf("Sonuç: %d",tam_sayi_sonuc);
+				printf("Çarpma Sonucu: %d",tam_sayi_sonuc);
 			}
 			break;
 
@@ -81,11 +85,11 @@ void basic_calc() //Basit Hesap Makinesi fonksiyonu
 			
 			if (sonuc!=tam_sayi_sonuc) 
 			{
-				printf("Sonuç: %.2f",sonuc);
+				printf("Bölme Sonucu: %.2f",sonuc);
 			}
 			else
 			{
-				printf("Sonuç: %d",tam_sayi_sonuc);
+				printf("Bölme Sonucu: %d",tam_sayi_sonuc);
 			}
 			break;
 	}
@@ -94,7 +98,7 @@ void basic_calc() //Basit Hesap Makinesi fonksiyonu
 	
 }
 
-void factorial_calc() //Faktöriyel Hesaplama Makinesi fonksiyonu
+int factorial_calc() //Faktöriyel Hesaplama Makinesi fonksiyonu
 {
 	int sayi;
 	unsigned long long int faktoriyel_sonucu=1;
@@ -108,20 +112,22 @@ void factorial_calc() //Faktöriyel Hesaplama Makinesi fonksiyonu
 	{
 		printf("--------------------------------");
 		printf("\nSonuç: %llu",faktoriyel_sonucu);
+		return 0;
 	}
 	
 	if (sayi<0)
 	{
 		printf("--------------------------------");
 		printf("\nLütfen Pozitif Bir Tam Sayý Giriniz!");
+		return 1;
 	}
 	
 	if (sayi>MAX_FAKTORIYEL_SINIRI)
 	{
 		printf("--------------------------------");
 		printf("\nBu Program 20'den Büyük Sayýlarýn Faktöriyelini Alamaz!");
+		return 1;
 	}
-	
 	printf("--------------------------------\n");
 	int i = sayi;
 	while (1<i)
@@ -133,11 +139,11 @@ void factorial_calc() //Faktöriyel Hesaplama Makinesi fonksiyonu
 	}
 		
 	printf("--------------------------------");
-	printf("\nSonuç: %llu",faktoriyel_sonucu);
+	printf("\nFaktöriyel Sonucu: %llu",faktoriyel_sonucu);
 
 }
 
-void sqrt_calc()
+void sqrt_calc() //Kare Alma fonksiyonu
 {
 	double kare_alinacak_sayi, karesi_sonuc;
 	int tam_karesi_sonuc;
@@ -155,7 +161,7 @@ void sqrt_calc()
 	else
 	{
 		printf("--------------------------------\n");
-		printf("Sayýnýn Karesi: %d",tam_karesi_sonuc);
+		printf("Kare Ýþlemi Sonucu: %d",tam_karesi_sonuc);
 	}
 	
 }
@@ -186,6 +192,14 @@ int main()
 		printf("--------------------------------\n");
 		printf("Menü Giriþi: ");
 		scanf("%d",&menu_secim);
+		
+		if(menu_secim!=1 && menu_secim!=2 && menu_secim!=3)
+		{
+			printf("--------------------------------\n");
+			printf("\r\x1b[1;31mHatalý Giriþ \x1b[0mLütfen Yukarýdaki Seçeneklerden Birini Kullanýn!\n");
+			i=1;
+		}
+		
 		if (menu_secim==1)
 		{
 			printf("\x1b[2J"); //Terminali sil
@@ -197,7 +211,7 @@ int main()
 			i = 0; //Döngüyü bitir
 			basic_calc(); //Fonksiyonu Çaðýr
 		}
-		else if (menu_secim==2)
+		if (menu_secim==2)
 		{
 			printf("\x1b[2J"); //Terminali sil
 			printf("\x1b[H"); //Ýmleci konumu sýfýrla
@@ -220,10 +234,6 @@ int main()
 			sqrt_calc();
 		}
 		
-		else
-		{
-		printf("\r\x1b[1;31mHatalý Giriþ \x1b[0mLütfen Yukarýdaki Seçeneklerden Birini Kullanýn!\n");
-		}	
 	}
 	
 	
