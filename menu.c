@@ -151,7 +151,7 @@ int factorial_calc() //Faktöriyel Hesaplama Makinesi fonksiyonu
 
 }
 
-void pow_calc() //Kare Alma fonksiyonu
+void squaring_calc() //Kare Alma fonksiyonu
 {
 	double kare_alinacak_sayi, karesi_sonuc;
 	int tam_karesi_sonuc;
@@ -234,7 +234,7 @@ int menu()
 			printf("\n\x1b[1;32mKare Hesaplama Makinesi\x1b[0m");
 			printf("\n--------------------------------\n");
 			i = 0;
-			pow_calc();
+			squaring_calc();
 		}
 		
 	}while(i);
