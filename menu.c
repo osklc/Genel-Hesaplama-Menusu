@@ -33,74 +33,26 @@ int basic_calc() //Basit Hesap Makinesi fonksiyonu
 	
 	switch(islem)
 	{
-		case '+':
-			printf("--------------------------------\n");
-			
-			sonuc = sayi1+sayi2;
-			tam_sayi_sonuc = (int)floor(sonuc);
-			
-			if (sonuc!=tam_sayi_sonuc) 
-			{
-				printf("Toplama Sonucu: %.2f",sonuc);
-			}
-			else
-			{
-				printf("Toplama Sonucu: %d",tam_sayi_sonuc);
-			}
-			break;
-			
-		case '-':
-			printf("--------------------------------\n");
-			
-			sonuc = sayi1-sayi2;
-			tam_sayi_sonuc = (int)floor(sonuc);
-			
-			if (sonuc!=tam_sayi_sonuc) 
-			{
-				printf("Çýkartma Sonucu: %.2f",sonuc);
-			}
-			else
-			{
-				printf("Çýkartma Sonucu: %d",tam_sayi_sonuc);
-			}
-			break;
-		case '*':
-			printf("--------------------------------\n");
-			
-			sonuc = sayi1*sayi2;
-			tam_sayi_sonuc = (int)floor(sonuc);
-			
-			if (sonuc!=tam_sayi_sonuc) 
-			{
-				printf("Çarpma Sonucu: %.2f",sonuc);
-			}
-			else
-			{
-				printf("Çarpma Sonucu: %d",tam_sayi_sonuc);
-			}
-			break;
-
-		case '/':
-			printf("--------------------------------\n");
+		case '+': sonuc = sayi1+sayi2; break;
+		case '-': sonuc = sayi1-sayi2; break;
+		case '*': sonuc = sayi1*sayi2; break;
+		case '/':	
+			if(sayi2==0){printf("--------------------------------\n\x1b[1;31mHATA: \x1b[0mBölüm 0 olamaz.");return 1;}
 			sonuc = sayi1/sayi2;
-			tam_sayi_sonuc = (int)floor(sonuc);
-			
-			if(sayi2==0)
-			{
-				printf("\x1b[1;31mHATA: \x1b[0mBölüm 0 olamaz.");
-				return 1;
-			}
-			
-			if (sonuc!=tam_sayi_sonuc) 
-			{
-				printf("Bölme Sonucu: %.2f",sonuc);
-			}
-			else
-			{
-				printf("Bölme Sonucu: %d",tam_sayi_sonuc);
-			}
 			break;
 	}
+			
+		printf("--------------------------------\n");
+		tam_sayi_sonuc = (int)floor(sonuc);
+		
+		if (sonuc!=tam_sayi_sonuc) 
+		{
+			printf("Bölme Sonucu: %.2f",sonuc);
+		}
+		else
+		{
+			printf("Bölme Sonucu: %d",tam_sayi_sonuc);
+		}
 
 
 	
@@ -191,7 +143,7 @@ int menu()
 		if (okuma_sonucu !=1)
 		{
 			printf("--------------------------------\n");
-			printf("\r\x1b[1;31mHATA: Lütfen sayýsal bir deðer girin!\x1b[0m\n");
+			printf("\r\x1b[1;31mHATA:\x1b[0m Lütfen sayýsal bir deðer girin!\n");
 			while (getchar() != '\n'); //tampon temizleme
 			menu_secim = -1; //geçersiz atama aþaðýdaki if'e takýlmasý için
 		}
@@ -205,7 +157,6 @@ int menu()
 		
 		if (menu_secim==1)
 		{
-			printf("\x1b[2J"); //Terminali sil
 			printf("\x1b[H"); //Ýmleci konumu sýfýrla
 			printf("\r\x1b[1;31mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n"); //Baþlýk Yazdýrma
 			printf("--------------------------------");
@@ -216,7 +167,6 @@ int menu()
 		}
 		if (menu_secim==2)
 		{
-			printf("\x1b[2J"); //Terminali sil
 			printf("\x1b[H"); //Ýmleci konumu sýfýrla
 			printf("\r\x1b[1;31mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n"); //Baþlýk Yazdýrma
 			printf("--------------------------------");
@@ -227,7 +177,6 @@ int menu()
 		}
 		else if (menu_secim==3)
 		{
-			printf("\x1b[2J"); //Terminali sil
 			printf("\x1b[H"); //Ýmleci konumu sýfýrla
 			printf("\r\x1b[1;31mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n"); //Baþlýk Yazdýrma
 			printf("--------------------------------");
