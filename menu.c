@@ -130,6 +130,7 @@ int menu()
 {
 	//Tanımlamalarımız
 	const int animasyon_suresi = 500;
+	const int menu_sayisi = 3;
 	int menu_secim;
 	int i = 1; 
 	int okuma_sonucu;
@@ -155,38 +156,36 @@ int menu()
 			i=1;
 		}
 		
-		if (menu_secim==1)
+		if(menu_secim>=1 && menu_secim<=menu_sayisi)
 		{
 			printf("\x1b[2J"); //Terminali sil	
 			printf("\x1b[H"); //İmleci konumu sıfırla
 			printf("\r\x1b[1;31mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n"); //Başlık Yazdırma
 			printf("--------------------------------");
-			printf("\n\x1b[1;32mTemel Dört Fonksiyonlu Hesap Makinesi\x1b[0m");
-			printf("\n--------------------------------\n");
-			i = 0; //Döngüyü bitir
-			basic_calc(); //Fonksiyonu Çağır
-		}
-		if (menu_secim==2)
-		{
-			printf("\x1b[2J"); //Terminali sil
-			printf("\x1b[H"); //İmleci konumu sıfırla
-			printf("\r\x1b[1;31mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n"); //Başlık Yazdırma
-			printf("--------------------------------");
-			printf("\n\x1b[1;32mFaktöriyel Hesaplama Makinesi\x1b[0m");
-			printf("\n--------------------------------\n");
-			i = 0;
-			factorial_calc();
-		}
-		else if (menu_secim==3)
-		{
-			printf("\x1b[2J"); //Terminali sil
-			printf("\x1b[H"); //İmleci konumu sıfırla
-			printf("\r\x1b[1;31mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n"); //Başlık Yazdırma
-			printf("--------------------------------");
-			printf("\n\x1b[1;32mKare Hesaplama Makinesi\x1b[0m");
-			printf("\n--------------------------------\n");
-			i = 0;
-			squaring_calc();
+			
+			switch(menu_secim)
+			{
+			
+			case 1:
+				printf("\n\x1b[1;32mTemel Dört Fonksiyonlu Hesap Makinesi\x1b[0m");
+				printf("\n--------------------------------\n");
+				i = 0;
+				basic_calc();
+				break;
+			case 2:
+				printf("\n\x1b[1;32mFaktöriyel Hesaplama Makinesi\x1b[0m");
+				printf("\n--------------------------------\n");
+				i = 0;
+				factorial_calc();
+				break;
+			case 3:
+				printf("\n\x1b[1;32mKare Hesaplama Makinesi\x1b[0m");
+				printf("\n--------------------------------\n");
+				i = 0;
+				squaring_calc();
+				break;
+			}
+			i=0;
 		}
 		
 	}while(i);
