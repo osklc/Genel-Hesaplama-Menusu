@@ -13,7 +13,6 @@ void basic_calc() //Basit Hesap Makinesi fonksiyonu
 	{
 		printf("--------------------------------\n");
 		printf("Hatalý Ýþlem Giriþi!");
-		return 1;
 	}
 	
 	double sayi1,sayi2,sonuc;
@@ -109,21 +108,18 @@ void factorial_calc() //Faktöriyel Hesaplama Makinesi fonksiyonu
 	{
 		printf("--------------------------------");
 		printf("\nSonuç: %llu",faktoriyel_sonucu);
-		return 0;
 	}
 	
 	if (sayi<0)
 	{
 		printf("--------------------------------");
 		printf("\nLütfen Pozitif Bir Tam Sayý Giriniz!");
-		return 1;
 	}
 	
 	if (sayi>MAX_FAKTORIYEL_SINIRI)
 	{
 		printf("--------------------------------");
 		printf("\nBu Program 20'den Büyük Sayýlarýn Faktöriyelini Alamaz!");
-		return 1;
 	}
 	
 	printf("--------------------------------\n");
@@ -141,6 +137,28 @@ void factorial_calc() //Faktöriyel Hesaplama Makinesi fonksiyonu
 
 }
 
+void sqrt_calc()
+{
+	double kare_alinacak_sayi, karesi_sonuc;
+	int tam_karesi_sonuc;
+	printf("Lütfen Karesi Alýnacak Sayýyý Giriniz: ");
+	scanf(" %lf",&kare_alinacak_sayi);
+	
+	karesi_sonuc = pow(kare_alinacak_sayi,2);
+	tam_karesi_sonuc = (int)floor(karesi_sonuc);
+	
+	if (karesi_sonuc!=tam_karesi_sonuc) 
+	{
+		printf("--------------------------------\n");
+		printf("Sonuç: %.2lf",karesi_sonuc);
+	}
+	else
+	{
+		printf("--------------------------------\n");
+		printf("Sayýnýn Karesi: %d",tam_karesi_sonuc);
+	}
+	
+}
 int main() 
 {
 	setlocale(LC_ALL,"Turkish"); //Türkçe için yerelleþtirme
@@ -161,10 +179,11 @@ int main()
 	printf("\nHangi Hesaplamayý Yapmak Ýstersiniz?\n");
 	//Sleep(500);
 	printf("--------------------------------\n");
-	printf("1-Temel Dört Fonksiyonlu Hesap Makinesi.\n2-Faktöriyel Hesaplama Makinesi.\n");
+	printf("1-Temel Dört Fonksiyonlu Hesap Makinesi.\n2-Faktöriyel Hesaplama Makinesi.\n3-Kare Hesaplama Makinesi\n");
 	
 	while(i)
 	{
+		printf("--------------------------------\n");
 		printf("Menü Giriþi: ");
 		scanf("%d",&menu_secim);
 		if (menu_secim==1)
@@ -189,6 +208,18 @@ int main()
 			i = 0;
 			factorial_calc();
 		}
+		else if (menu_secim==3)
+		{
+			printf("\x1b[2J"); //Terminali sil
+			printf("\x1b[H"); //Ýmleci konumu sýfýrla
+			printf("\r\x1b[1;31mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n"); //Baþlýk Yazdýrma
+			printf("--------------------------------");
+			printf("\n\x1b[1;32mKare Hesaplama Makinesi\x1b[0m");
+			printf("\n--------------------------------\n");
+			i = 0;
+			sqrt_calc();
+		}
+		
 		else
 		{
 		printf("\r\x1b[1;31mHatalý Giriþ \x1b[0mLütfen Yukarýdaki Seçeneklerden Birini Kullanýn!\n");
