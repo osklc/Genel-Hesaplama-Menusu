@@ -3,8 +3,6 @@
 #include <locale.h>
 #include <windows.h>
 
-//Problemler:
-//basit hesap makinesi 2 sayý giriþi alýrken str için sapýtýyor
 
 int basic_calc() //Basit Hesap Makinesi fonksiyonu
 {
@@ -87,9 +85,18 @@ int factorial_calc() //Faktöriyel Hesaplama Makinesi fonksiyonu
 	int sayi;
 	unsigned long long int faktoriyel_sonucu=1;
 	const int MAX_FAKTORIYEL_SINIRI = 20;
+	int okuma_sonucu_fac;
 	
 	printf("Lütfen Faktöriyel Hesabý Ýçin 0-20 Arasýnda Bir Tam Sayý Giriniz (Ondalýk Sayýnýn Tam Kýsmý Kullanýlacaktýr): ");
-	scanf("%d",&sayi);
+	okuma_sonucu_fac = scanf("%d",&sayi);
+	
+	if (okuma_sonucu_fac!=1)
+	{	
+		printf("--------------------------------\n");
+		printf("\x1b[1;31mHATA: \x1b[0mLütfen sayýsal bir deðer giriniz.");
+		while (getchar() != '\n');
+		return 1;
+	}
 	
 	if(sayi==0 || sayi==1)
 	{
@@ -98,14 +105,14 @@ int factorial_calc() //Faktöriyel Hesaplama Makinesi fonksiyonu
 		return 0;
 	}
 	
-	if (sayi<0)
+	if (sayi<0 && okuma_sonucu_fac==1)
 	{
 		printf("--------------------------------");
 		printf("\n\x1b[1;31mHATA: \x1b[0mLütfen Pozitif Bir Tam Sayý Giriniz!");
 		return 1;
 	}
 	
-	if (sayi>MAX_FAKTORIYEL_SINIRI)
+	if (sayi>MAX_FAKTORIYEL_SINIRI && okuma_sonucu_fac==1)
 	{
 		printf("--------------------------------");
 		printf("\n\x1b[1;31mHATA: \x1b[0mBu Program 20'den Büyük Sayýlarýn Faktöriyelini Alamaz!");
