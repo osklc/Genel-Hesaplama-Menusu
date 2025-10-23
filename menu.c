@@ -5,6 +5,7 @@
 
 //Problemler: 1. menüye string girince program sapýtýyor.
 //2. basit hesap makinesi inputta hem str hem c hem int için sapýtýyor
+//3. basit hesap makinesi 2 sayý giriþi alýrken str için sapýtýyor
 
 int basic_calc() //Basit Hesap Makinesi fonksiyonu
 {
@@ -28,6 +29,8 @@ int basic_calc() //Basit Hesap Makinesi fonksiyonu
 	printf("--------------------------------\n");
 	printf("Lütfen 2. sayýyý giriniz: ");
 	scanf("%lf",&sayi2);
+	
+	
 	
 	switch(islem)
 	{
@@ -165,28 +168,13 @@ void sqrt_calc() //Kare Alma fonksiyonu
 	}
 	
 }
-int main() 
+
+int menu()
 {
-	setlocale(LC_ALL,"Turkish"); //Türkçe için yerelleþtirme
-	setlocale(LC_NUMERIC, "C");  //Hesaplamalarda ',' '.' çakýþmasý istemiyoruz
 	//Tanýmlamalarýmýz
+	const int animasyon_suresi = 500;
 	int menu_secim;
 	int i = 1; 
-	
-	printf("\r\x1b[1;31mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n"); //Baþlýk Yazdýrma
-	printf("--------------------------------");
-	printf("\nHesaplama Menüsüne Hoþ Geldiniz.");
-	//Sleep(1000); //1sn Bekletme
-	printf("\x1b[2J"); //Terminali sil
-	printf("\x1b[H"); //Ýmleci konumu sýfýrla
-	printf("\r\x1b[1;31mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n");
-	printf("--------------------------------");
-	//Sleep(1000);
-	printf("\nHangi Hesaplamayý Yapmak Ýstersiniz?\n");
-	//Sleep(500);
-	printf("--------------------------------\n");
-	printf("1-Temel Dört Fonksiyonlu Hesap Makinesi.\n2-Faktöriyel Hesaplama Makinesi.\n3-Kare Hesaplama Makinesi\n");
-	
 	while(i)
 	{
 		printf("--------------------------------\n");
@@ -198,6 +186,7 @@ int main()
 			printf("--------------------------------\n");
 			printf("\r\x1b[1;31mHatalý Giriþ \x1b[0mLütfen Yukarýdaki Seçeneklerden Birini Kullanýn!\n");
 			i=1;
+			return 1;
 		}
 		
 		if (menu_secim==1)
@@ -235,6 +224,28 @@ int main()
 		}
 		
 	}
+}
+
+int main() 
+{
+	setlocale(LC_ALL,"Turkish"); //Türkçe için yerelleþtirme
+	setlocale(LC_NUMERIC, "C");  //Hesaplamalarda ',' '.' çakýþmasý istemiyoruz
+	
+	printf("\r\x1b[1;31mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n"); //Baþlýk Yazdýrma
+	printf("--------------------------------");
+	printf("\nHesaplama Menüsüne Hoþ Geldiniz.");
+	//Sleep(animasyon_suresi); //1sn Bekletme //Debug sürecinde-aktif deðil
+	printf("\x1b[2J"); //Terminali sil
+	printf("\x1b[H"); //Ýmleci konumu sýfýrla
+	printf("\r\x1b[1;31mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n");
+	printf("--------------------------------");
+	//Sleep(animasyon_suresi);
+	printf("\nHangi Hesaplamayý Yapmak Ýstersiniz?\n");
+	//Sleep(animasyon_suresi);
+	printf("--------------------------------\n");
+	printf("1-Temel Dört Fonksiyonlu Hesap Makinesi.\n2-Faktöriyel Hesaplama Makinesi.\n3-Kare Hesaplama Makinesi\n");
+	
+	menu();
 	
 	
 	return 0;
