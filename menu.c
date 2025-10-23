@@ -3,9 +3,8 @@
 #include <locale.h>
 #include <windows.h>
 
-//Problemler: 1. menüye string girince program sapýtýyor.
-//2. basit hesap makinesi inputta hem str hem c hem int için sapýtýyor
-//3. basit hesap makinesi 2 sayý giriþi alýrken str için sapýtýyor
+//Problemler:
+//basit hesap makinesi 2 sayý giriþi alýrken str için sapýtýyor
 
 int basic_calc() //Basit Hesap Makinesi fonksiyonu
 {
@@ -16,7 +15,7 @@ int basic_calc() //Basit Hesap Makinesi fonksiyonu
 	if(islem != '+' && islem != '-' && islem != '*' && islem != '/')
 	{
 		printf("--------------------------------\n");
-		printf("Hatalý Ýþlem Giriþi!");
+		printf("\x1b[1;31mHatalý Ýþlem Giriþi!\x1b[0m");
 		return 1;
 	}
 	
@@ -85,6 +84,12 @@ int basic_calc() //Basit Hesap Makinesi fonksiyonu
 			printf("--------------------------------\n");
 			sonuc = sayi1/sayi2;
 			tam_sayi_sonuc = (int)floor(sonuc);
+			
+			if(sayi2==0)
+			{
+				printf("\x1b[1;31mHATA: \x1b[0mBölüm 0 olamaz.");
+				return 1;
+			}
 			
 			if (sonuc!=tam_sayi_sonuc) 
 			{
@@ -188,7 +193,7 @@ int menu()
 			printf("--------------------------------\n");
 			printf("\r\x1b[1;31mHATA: Lütfen sayýsal bir deðer girin!\x1b[0m\n");
 			while (getchar() != '\n'); //tampon temizleme
-			menu_secim = -1; //geçersiz atama aþaðýdaki if'e gitmesi için
+			menu_secim = -1; //geçersiz atama aþaðýdaki if'e takýlmasý için
 		}
 		
 		else if(menu_secim!=1 && menu_secim!=2 && menu_secim!=3)
