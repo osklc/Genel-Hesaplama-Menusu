@@ -157,6 +157,7 @@ int menu()
 		
 		if (menu_secim==1)
 		{
+			printf("\x1b[2J"); //Terminali sil	
 			printf("\x1b[H"); //Ýmleci konumu sýfýrla
 			printf("\r\x1b[1;31mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n"); //Baþlýk Yazdýrma
 			printf("--------------------------------");
@@ -167,6 +168,7 @@ int menu()
 		}
 		if (menu_secim==2)
 		{
+			printf("\x1b[2J"); //Terminali sil
 			printf("\x1b[H"); //Ýmleci konumu sýfýrla
 			printf("\r\x1b[1;31mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n"); //Baþlýk Yazdýrma
 			printf("--------------------------------");
@@ -177,6 +179,7 @@ int menu()
 		}
 		else if (menu_secim==3)
 		{
+			printf("\x1b[2J"); //Terminali sil
 			printf("\x1b[H"); //Ýmleci konumu sýfýrla
 			printf("\r\x1b[1;31mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n"); //Baþlýk Yazdýrma
 			printf("--------------------------------");
