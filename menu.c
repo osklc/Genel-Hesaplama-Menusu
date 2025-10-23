@@ -54,8 +54,7 @@ int basic_calc() //Basit Hesap Makinesi fonksiyonu
 			printf("Bölme Sonucu: %d",tam_sayi_sonuc);
 		}
 
-
-	
+	return 0;
 }
 
 int factorial_calc() //Faktöriyel Hesaplama Makinesi fonksiyonu
@@ -100,10 +99,11 @@ int factorial_calc() //Faktöriyel Hesaplama Makinesi fonksiyonu
 		
 	printf("--------------------------------");
 	printf("\nFaktöriyel Sonucu: %llu",faktoriyel_sonucu);
+	return 0;
 
 }
 
-void squaring_calc() //Kare Alma fonksiyonu
+int squaring_calc() //Kare Alma fonksiyonu
 {
 	double kare_alinacak_sayi, karesi_sonuc;
 	int tam_karesi_sonuc;
@@ -123,7 +123,7 @@ void squaring_calc() //Kare Alma fonksiyonu
 		printf("--------------------------------\n");
 		printf("Kare Ýþlemi Sonucu: %d",tam_karesi_sonuc);
 	}
-	
+	return 0;
 }
 
 int menu()
