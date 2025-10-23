@@ -15,7 +15,7 @@ int basic_calc() //Basit Hesap Makinesi fonksiyonu
 	if(islem != '+' && islem != '-' && islem != '*' && islem != '/')
 	{
 		printf("--------------------------------\n");
-		printf("\x1b[1;31mHatalý Ýþlem Giriþi!\x1b[0m");
+		printf("\x1b[1;31mHATA: \x1b[0mLütfen tanýmlanmýþ bir iþlem giriniz.");
 		return 1;
 	}
 	
@@ -77,14 +77,14 @@ int factorial_calc() //Faktöriyel Hesaplama Makinesi fonksiyonu
 	if (sayi<0)
 	{
 		printf("--------------------------------");
-		printf("\nLütfen Pozitif Bir Tam Sayý Giriniz!");
+		printf("\n\x1b[1;31mHATA: \x1b[0mLütfen Pozitif Bir Tam Sayý Giriniz!");
 		return 1;
 	}
 	
 	if (sayi>MAX_FAKTORIYEL_SINIRI)
 	{
 		printf("--------------------------------");
-		printf("\nBu Program 20'den Büyük Sayýlarýn Faktöriyelini Alamaz!");
+		printf("\n\x1b[1;31mHATA: \x1b[0mBu Program 20'den Büyük Sayýlarýn Faktöriyelini Alamaz!");
 		return 1;
 	}
 	printf("--------------------------------\n");
@@ -149,18 +149,11 @@ int menu()
 			menu_secim = -1; //geçersiz atama aþaðýdaki if'e takýlmasý için
 		}
 		
-		else if(menu_secim!=1 && menu_secim!=2 && menu_secim!=3)
-		{
-			printf("--------------------------------\n");
-			printf("\r\x1b[1;31mHatalý Giriþ \x1b[0mLütfen Yukarýdaki Seçeneklerden Birini Kullanýn!\n");
-			i=1;
-		}
-		
 		if(menu_secim>=1 && menu_secim<=menu_sayisi)
 		{
 			printf("\x1b[2J"); //Terminali sil	
 			printf("\x1b[H"); //Ýmleci konumu sýfýrla
-			printf("\r\x1b[1;31mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n"); //Baþlýk Yazdýrma
+			printf("\r\x1b[1;34mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n"); //Baþlýk Yazdýrma
 			printf("--------------------------------");
 			
 			switch(menu_secim)
@@ -186,6 +179,14 @@ int menu()
 				break;
 			}
 			i=0;
+		
+
+		}
+		else if (menu_secim !=-1)
+		{
+			printf("--------------------------------\n");
+			printf("\r\x1b[1;31mHATA: \x1b[0mLütfen Yukarýdaki Seçeneklerden Birini Kullanýn!\n");
+			i=1;
 		}
 		
 	}while(i);
@@ -197,13 +198,13 @@ int main()
 	setlocale(LC_ALL,"Turkish"); //Türkçe için yerelleþtirme
 	setlocale(LC_NUMERIC, "C");  //Hesaplamalarda ',' '.' çakýþmasý istemiyoruz
 	
-	printf("\r\x1b[1;31mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n"); //Baþlýk Yazdýrma
+	printf("\r\x1b[1;34mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n"); //Baþlýk Yazdýrma
 	printf("--------------------------------");
 	printf("\nHesaplama Menüsüne Hoþ Geldiniz.");
 	//Sleep(animasyon_suresi); //1sn Bekletme //Debug sürecinde-aktif deðil
 	printf("\x1b[2J"); //Terminali sil
 	printf("\x1b[H"); //Ýmleci konumu sýfýrla
-	printf("\r\x1b[1;31mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n");
+	printf("\r\x1b[1;34mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n");
 	printf("--------------------------------");
 	//Sleep(animasyon_suresi);
 	printf("\nHangi Hesaplamayý Yapmak Ýstersiniz?\n");
