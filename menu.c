@@ -175,18 +175,27 @@ int menu()
 	const int animasyon_suresi = 500;
 	int menu_secim;
 	int i = 1; 
-	while(i)
+	int okuma_sonucu;
+	
+	do 
 	{
 		printf("--------------------------------\n");
 		printf("Menü Giriþi: ");
-		scanf("%d",&menu_secim);
+		okuma_sonucu = scanf("%d",&menu_secim);
 		
-		if(menu_secim!=1 && menu_secim!=2 && menu_secim!=3)
+		if (okuma_sonucu !=1)
+		{
+			printf("--------------------------------\n");
+			printf("\r\x1b[1;31mHATA: Lütfen sayýsal bir deðer girin!\x1b[0m\n");
+			while (getchar() != '\n'); //tampon temizleme
+			menu_secim = -1; //geçersiz atama aþaðýdaki if'e gitmesi için
+		}
+		
+		else if(menu_secim!=1 && menu_secim!=2 && menu_secim!=3)
 		{
 			printf("--------------------------------\n");
 			printf("\r\x1b[1;31mHatalý Giriþ \x1b[0mLütfen Yukarýdaki Seçeneklerden Birini Kullanýn!\n");
 			i=1;
-			return 1;
 		}
 		
 		if (menu_secim==1)
@@ -223,7 +232,8 @@ int menu()
 			sqrt_calc();
 		}
 		
-	}
+	}while(i);
+
 }
 
 int main() 
