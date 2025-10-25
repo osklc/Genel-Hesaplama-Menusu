@@ -147,27 +147,33 @@ int squaring_calc() //Kare Alma fonksiyonu
 		printf("Lütfen Karesi Alýnacak Sayýyý Giriniz: ");
 		okuma_sonucu_squaring = scanf(" %lf",&kare_alinacak_sayi);
 		
-		if(okuma_sonucu_squaring !=1)
+		if(okuma_sonucu_squaring == 1)
 		{
-			printf("--------------------------------\n");
-			printf("\r\x1b[1;31mHATA:\x1b[0m Lütfen sayýsal bir deðer girin!");
-			return 1;
+			karesi_sonuc = pow(kare_alinacak_sayi,2);
+			tam_karesi_sonuc = (int)floor(karesi_sonuc);
+			
+			if (karesi_sonuc!=tam_karesi_sonuc) 
+			{
+				printf("--------------------------------\n");
+				printf("Sonuç: %.2lf",karesi_sonuc);
+				i=0;
+			}
+			else
+			{
+				printf("--------------------------------\n");
+				printf("Kare Ýþlemi Sonucu: %d",tam_karesi_sonuc);
+				i=0;
+			}		
 		}
 		
-		karesi_sonuc = pow(kare_alinacak_sayi,2);
-		tam_karesi_sonuc = (int)floor(karesi_sonuc);
-		
-		if (karesi_sonuc!=tam_karesi_sonuc) 
+		else if(okuma_sonucu_squaring !=1)
 		{
 			printf("--------------------------------\n");
-			printf("Sonuç: %.2lf",karesi_sonuc);
-			return 0;
-		}
-		else
-		{
+			printf("\r\x1b[1;31mHATA:\x1b[0m Lütfen sayýsal bir deðer girin!\n");
 			printf("--------------------------------\n");
-			printf("Kare Ýþlemi Sonucu: %d",tam_karesi_sonuc);
-			return 0;
+			while (getchar() != '\n'); //tampon temizleme
+			i=1;
+			
 		}
 		
 	}while(i);
