@@ -2,7 +2,7 @@
 #include <math.h>
 #include <locale.h>
 #include <windows.h>
-
+//Programý Geliþtireceksen döngü mantýðýný bütün fonksiyonlara sonra koy!!
 
 int basic_calc() //Basit Hesap Makinesi fonksiyonu
 {
@@ -98,6 +98,7 @@ int factorial_calc() //Faktöriyel Hesaplama Makinesi fonksiyonu
 		return 1;
 	}
 	
+	
 	if(sayi==0 || sayi==1)
 	{
 		printf("--------------------------------");
@@ -138,29 +139,44 @@ int squaring_calc() //Kare Alma fonksiyonu
 {
 	double kare_alinacak_sayi, karesi_sonuc;
 	int tam_karesi_sonuc;
-	printf("Lütfen Karesi Alýnacak Sayýyý Giriniz: ");
-	scanf(" %lf",&kare_alinacak_sayi);
+	int i = 1;
 	
-	karesi_sonuc = pow(kare_alinacak_sayi,2);
-	tam_karesi_sonuc = (int)floor(karesi_sonuc);
+	do
+	{
+		int okuma_sonucu_squaring;
+		printf("Lütfen Karesi Alýnacak Sayýyý Giriniz: ");
+		okuma_sonucu_squaring = scanf(" %lf",&kare_alinacak_sayi);
+		
+		if(okuma_sonucu_squaring !=1)
+		{
+			printf("--------------------------------\n");
+			printf("\r\x1b[1;31mHATA:\x1b[0m Lütfen sayýsal bir deðer girin!");
+			return 1;
+		}
+		
+		karesi_sonuc = pow(kare_alinacak_sayi,2);
+		tam_karesi_sonuc = (int)floor(karesi_sonuc);
+		
+		if (karesi_sonuc!=tam_karesi_sonuc) 
+		{
+			printf("--------------------------------\n");
+			printf("Sonuç: %.2lf",karesi_sonuc);
+			return 0;
+		}
+		else
+		{
+			printf("--------------------------------\n");
+			printf("Kare Ýþlemi Sonucu: %d",tam_karesi_sonuc);
+			return 0;
+		}
+		
+	}while(i);
 	
-	if (karesi_sonuc!=tam_karesi_sonuc) 
-	{
-		printf("--------------------------------\n");
-		printf("Sonuç: %.2lf",karesi_sonuc);
-	}
-	else
-	{
-		printf("--------------------------------\n");
-		printf("Kare Ýþlemi Sonucu: %d",tam_karesi_sonuc);
-	}
-	return 0;
 }
 
 int menu() //Menü fonksiyonu
 {
 	//Tanýmlamalarýmýz
-	const int animasyon_suresi = 500;
 	const int menu_sayisi = 3;
 	int menu_secim;
 	int i = 1; 
@@ -228,18 +244,19 @@ int main() //Ana fonksiyon
 {
 	setlocale(LC_ALL,"Turkish"); //Türkçe için yerelleþtirme
 	setlocale(LC_NUMERIC, "C");  //Hesaplamalarda ',' '.' çakýþmasý istemiyoruz
+	const int animasyon_suresi = 700;
 	
 	printf("\r\x1b[1;34mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n"); //Baþlýk Yazdýrma
 	printf("--------------------------------");
 	printf("\nHesaplama Menüsüne Hoþ Geldiniz.");
-	//Sleep(animasyon_suresi); //1sn Bekletme //Debug sürecinde-aktif deðil
+	Sleep(animasyon_suresi); //1sn Bekletme //Debug sürecinde-aktif deðil
 	printf("\x1b[2J"); //Terminali sil
 	printf("\x1b[H"); //Ýmleci konumu sýfýrla
 	printf("\r\x1b[1;34mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n");
 	printf("--------------------------------");
-	//Sleep(animasyon_suresi);
+	Sleep(animasyon_suresi);
 	printf("\nHangi Hesaplamayý Yapmak Ýstersiniz?\n");
-	//Sleep(animasyon_suresi);
+	Sleep(animasyon_suresi);
 	printf("--------------------------------\n");
 	printf("1-Temel Dört Fonksiyonlu Hesap Makinesi.\n2-Faktöriyel Hesaplama Makinesi.\n3-Kare Hesaplama Makinesi\n");
 	
