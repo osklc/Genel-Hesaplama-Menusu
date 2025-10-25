@@ -7,7 +7,7 @@
 int basic_calc() //Basit Hesap Makinesi fonksiyonu
 {
 	char islem;
-	printf("Lütfen Ýþlem Giriniz(+,-,*,/): ");
+	printf("Lütfen Ýþlem Giriniz\x1b[0;33m (+,-,*,/)\x1b[0m: ");
 	scanf(" %c",&islem);
 	
 	if(islem != '+' && islem != '-' && islem != '*' && islem != '/')
@@ -24,13 +24,13 @@ int basic_calc() //Basit Hesap Makinesi fonksiyonu
 	printf("--------------------------------");
 	do
 	{
-		printf("\nLütfen 1. sayýyý giriniz: ");
+		printf("\nLütfen \x1b[0;33m1. \x1b[1;0msayýyý giriniz: ");
 		okuma_sonucu_double = scanf("%lf",&sayi1);
 		
 		if (okuma_sonucu_double!=1)
 		{
 			printf("--------------------------------\n");
-			printf("\x1b[1;31mHATA: \x1b[0mLütfen sayýsal bir deðer giriniz.");
+			printf("\x1b[0;31mHATA: \x1b[1;0mLütfen sayýsal bir deðer giriniz.");
 			printf("\n--------------------------------");
 			while (getchar() != '\n');
 		}
@@ -40,7 +40,7 @@ int basic_calc() //Basit Hesap Makinesi fonksiyonu
 	do
 	{
 		
-		printf("\nLütfen 2. sayýyý giriniz: ");
+		printf("\nLütfen \x1b[0;33m2. \x1b[1;0msayýyý giriniz: ");
 		okuma_sonucu_double = scanf("%lf",&sayi2);
 		
 		if(okuma_sonucu_double!=1)
@@ -70,11 +70,11 @@ int basic_calc() //Basit Hesap Makinesi fonksiyonu
 		
 		if (sonuc!=tam_sayi_sonuc) 
 		{
-			printf("Bölme Sonucu: %.2f",sonuc);
+			printf("\x1b[0;32mHesaplama Ýþlemi Sonucu: %.2f\x1b[1;0m",sonuc);
 		}
 		else
 		{
-			printf("Bölme Sonucu: %d",tam_sayi_sonuc);
+			printf("\x1b[0;32mHesaplama Ýþlemi Sonucu: %d\x1b[1;0m",tam_sayi_sonuc);
 		}
 
 	return 0;
@@ -87,7 +87,7 @@ int factorial_calc() //Faktöriyel Hesaplama Makinesi fonksiyonu
 	const int MAX_FAKTORIYEL_SINIRI = 20;
 	int okuma_sonucu_fac;
 	
-	printf("Lütfen Faktöriyel Hesabý Ýçin 0-20 Arasýnda Bir Tam Sayý Giriniz (Ondalýk Sayýnýn Tam Kýsmý Kullanýlacaktýr): ");
+	printf("Lütfen Faktöriyel Hesabý Ýçin 0-20 Arasýnda Bir Tam Sayý Giriniz \x1b[0;33m(Ondalýk Sayýnýn Tam Kýsmý Kullanýlacaktýr)\x1b[0m: ");
 	okuma_sonucu_fac = scanf("%d",&sayi);
 	
 	if (okuma_sonucu_fac!=1)
@@ -130,7 +130,7 @@ int factorial_calc() //Faktöriyel Hesaplama Makinesi fonksiyonu
 	}
 		
 	printf("--------------------------------");
-	printf("\nFaktöriyel Sonucu: %llu",faktoriyel_sonucu);
+	printf("\n\x1b[0;32mFaktöriyel Sonucu: %llu\x1b[1;0m",faktoriyel_sonucu);
 	return 0;
 
 }
@@ -161,7 +161,7 @@ int squaring_calc() //Kare Alma fonksiyonu
 			else
 			{
 				printf("--------------------------------\n");
-				printf("Kare Ýþlemi Sonucu: %d",tam_karesi_sonuc);
+				printf("\x1b[0;32mKare Alma Ýþlemi Sonucu: %d\x1b[1;0m",tam_karesi_sonuc);
 				i=0;
 			}		
 		}
@@ -191,7 +191,7 @@ int menu() //Menü fonksiyonu
 	do 
 	{
 		printf("--------------------------------\n");
-		printf("Menü Giriþi: ");
+		printf("\x1b[0;35mMenü Giriþi: \x1b[1;0m");
 		okuma_sonucu_menu = scanf("%d",&menu_secim);
 		
 		if (okuma_sonucu_menu !=1)
@@ -213,19 +213,19 @@ int menu() //Menü fonksiyonu
 			{
 			
 			case 1:
-				printf("\n\x1b[1;32mTemel Dört Fonksiyonlu Hesap Makinesi\x1b[0m");
+				printf("\n\x1b[1;35mTemel Dört Fonksiyonlu Hesap Makinesi\x1b[0m");
 				printf("\n--------------------------------\n");
 				i = 0;
 				basic_calc();
 				break;
 			case 2:
-				printf("\n\x1b[1;32mFaktöriyel Hesaplama Makinesi\x1b[0m");
+				printf("\n\x1b[1;35mFaktöriyel Hesaplama Makinesi\x1b[0m");
 				printf("\n--------------------------------\n");
 				i = 0;
 				factorial_calc();
 				break;
 			case 3:
-				printf("\n\x1b[1;32mKare Hesaplama Makinesi\x1b[0m");
+				printf("\n\x1b[1;35mKare Hesaplama Makinesi\x1b[0m");
 				printf("\n--------------------------------\n");
 				i = 0;
 				squaring_calc();
@@ -255,16 +255,18 @@ int main() //Ana fonksiyon
 	printf("\r\x1b[1;34mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n"); //Baþlýk Yazdýrma
 	printf("--------------------------------");
 	printf("\nHesaplama Menüsüne Hoþ Geldiniz.");
-	Sleep(animasyon_suresi); //1sn Bekletme //Debug sürecinde-aktif deðil
+	//Sleep(animasyon_suresi); //1sn Bekletme //Debug sürecinde-aktif deðil
 	printf("\x1b[2J"); //Terminali sil
 	printf("\x1b[H"); //Ýmleci konumu sýfýrla
 	printf("\r\x1b[1;34mGENEL HESAPLAMA MENÜSÜ\x1b[0m\n");
 	printf("--------------------------------");
-	Sleep(animasyon_suresi);
+	//Sleep(animasyon_suresi);
 	printf("\nHangi Hesaplamayý Yapmak Ýstersiniz?\n");
-	Sleep(animasyon_suresi);
+	//Sleep(animasyon_suresi);
 	printf("--------------------------------\n");
-	printf("1-Temel Dört Fonksiyonlu Hesap Makinesi.\n2-Faktöriyel Hesaplama Makinesi.\n3-Kare Hesaplama Makinesi\n");
+	printf("\x1b[1;36m1 \x1b[0m- Temel Dört Fonksiyonlu Hesap Makinesi.\n");
+	printf("\x1b[1;36m2 \x1b[0m- Faktöriyel Hesaplama Makinesi.\n");
+	printf("\x1b[1;36m3 \x1b[0m- Kare Hesaplama Makinesi\n");
 	
 	menu();
 	
