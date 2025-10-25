@@ -2,7 +2,7 @@
 #include <math.h>
 #include <locale.h>
 #include <windows.h>
-//Programý Geliþtireceksen döngü mantýðýný bütün fonksiyonlara sonra koy!!
+//Programý Geliþtireceksen fgets mantýðýný entegre et
 
 int basic_calc() //Basit Hesap Makinesi fonksiyonu
 {
